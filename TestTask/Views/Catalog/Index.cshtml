@@ -3,6 +3,15 @@
 
 <h1>@ViewBag.CatalogTitle</h1>
 
+<div>
+    <a asp-action="ExportCatalogStructure" class="btn btn-primary">Export</a>
+
+    <form asp-action="ImportCatalogStructure" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit" class="btn btn-success">Import</button>
+    </form>
+</div>
+
 @foreach (var catalog in Model)
 {
     <div>
