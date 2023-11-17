@@ -1,0 +1,20 @@
+﻿@using TestTask.Dto
+@model List<CatalogDto>
+
+<h1>@ViewBag.CatalogTitle</h1>
+
+@foreach (var catalog in Model)
+{
+    <div>
+        <h2><a href="@Url.Action("Index", new { id = catalog.CatalogId })">@catalog.Name</a></h2>
+        @if (catalog.SubCatalogs.Any())
+        {
+            <ul>
+                @foreach (var subCatalog in catalog.SubCatalogs)
+                {
+                    <li><a href="@Url.Action("Index", new { id = subCatalog.CatalogId })">@subCatalog.Name</a></li>
+                }
+            </ul>
+        }
+    </div>
+}
