@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TestTask.AppDb;
+using TestTask.Interfaces;
+using TestTask.Services;
 
 internal class Program
 {
@@ -7,6 +9,7 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.Services.AddScoped<ICatalogService, CatalogService>();
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
